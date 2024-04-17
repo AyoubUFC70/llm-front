@@ -1,0 +1,37 @@
+/* .user-message-container {
+    display: flex;
+    justify-self: right;
+    flex-direction: row-reverse;
+    justify-self: flex-end;
+
+}
+
+.assistant-message-container {
+    display: flex;
+    justify-self: flex-start;
+    width: fit-content;
+} */
+
+.chat-interface {
+    width: 50vw;
+    height: 70vh;
+}
+
+.messages {
+    height: 60vh;
+    
+}
+
+.messages::-webkit-scrollbar {
+    flex: 1;
+}
+
+.message {
+    word-wrap: break-word;
+    max-width: calc(100% - 32px);
+}
+
+.input-msg {
+    flex: 1;
+}
+

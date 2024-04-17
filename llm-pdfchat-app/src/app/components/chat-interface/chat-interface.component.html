@@ -1,0 +1,128 @@
+<!-- <div class="chat-container">
+    <div class="chat-header">
+        <h2>Chat with Mistral</h2>
+    </div>
+    <div class="chat-content">
+        <div *ngFor="let msg of botResponse" class="flex flex-col p-4 border border-gray-300 rounded text-fuchsia-200" [ngClass]="">
+            <i class="fa-regular fa-user" *ngIf="msg.sender === 'user'"></i>
+            <i class="fa-solid fa-robot" *ngIf="msg.sender === 'model'"></i>
+            <p class="message">{{ msg.message }}</p>
+        </div>
+    </div>
+    <div class="chat-input flex items-center">
+        <i class="fa-regular fa-paper-plane"></i>
+        <input type="text" [(ngModel)]="userInput" placeholder="Enter your message..." class="text">
+        <button (click)="startChat()">Send</button>
+    </div>
+</div> -->
+
+<!-- <section class="container mx-auto p-5 fixed inset-0">
+    <div class="mockup-window border bg-base-300 w-full h-full flex flex-col">
+        <div class="p-5 pb-8 flex-grow overflow-auto">
+            <div *ngFor="let msg of messages; let i = index" [ngClass]="{ 'chat chat-start': msg.role === 'assistant', 'chat chat-end': msg.role === 'user' }" key="msg.content + i">
+                <div class="chat-image avatar">
+                    <div class="w-10 rounded-full">
+                        <img [src]="msg.role === 'assistant' ? 'https://cdn-tlc.01net.com/dcJ5UWU0cnYMKTzjZFUeH7JB3yOiEEpV6gdqpuvU.png' : 'https://pbs.twimg.com/profile_images/1642770590598676480/xvPxpaL3_400x400.png'" alt="Avatar">
+                    </div>
+                </div>
+                <div class="chat-bubble">{{ msg.content }}</div>
+            </div>
+        </div>
+    </div>
+
+    <form class="form-control m-5 items-center" (submit)="handleSubmit()">
+        <div class="input-group max-w-full w-[800px] relative">
+            <small *ngIf="isTyping" class="absolute -top-5 left-0.5 animate-pulse">Mistral is Typing...</small>
+            
+            <input type="text" placeholder="Type a question, ask about your documents..." class="input input-bordered flex-grow" required />
+            <button class="btn btn-square" type="submit">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z" />
+                </svg>
+            </button>
+        </div>
+    </form>
+</section> -->
+
+
+<!-- <div class="flex flex-col overflow-hidden w-full px-40 bg-transparent border border-gray-300 rounded-lg shadow-md">
+   
+      <div *ngFor="let msg of messages" class="flex mb-4" [ngClass]="{ 'user-message-container': msg.role === 'user', 'assistant-message-container': msg.role === 'assistant' }">
+        <div class="flex space-y-4 mb-4 overflow-y-auto"> -->
+          <!-- <div *ngIf="msg.role === 'user'" >
+            <img src="https://pbs.twimg.com/profile_images/1642770590598676480/xvPxpaL3_400x400.png" alt="User avatar" class="w-8 h-8 rounded-full object-cover">
+          </div>
+          <div class="text-indigo-100" [ngClass]="{ 'bg-green-500': msg.role === 'user', 'bg-green-900': msg.role === 'assistant', 'rounded-lg': true, 'shadow-md': true, 'p-2': true, 'ml-auto': msg.role === 'assistant', 'mr-auto': msg.role === 'user', 'rounded-br-none border-green-500': msg.role === 'user', 'rounded-bl-none border-green-300': msg.role === 'assistant' }">
+            {{ msg.content }}
+          </div>
+          <div *ngIf="msg.role === 'assistant'">
+            <img src="https://cdn-tlc.01net.com/dcJ5UWU0cnYMKTzjZFUeH7JB3yOiEEpV6gdqpuvU.png" alt="Bot avatar" class="w-8 h-8 rounded-full object-cover">
+          </div> -->
+            <!-- <img [src]="msg.role === 'user' ? 'https://pbs.twimg.com/profile_images/1642770590598676480/xvPxpaL3_400x400.png' : 'https://cdn-tlc.01net.com/dcJ5UWU0cnYMKTzjZFUeH7JB3yOiEEpV6gdqpuvU.png'" [alt]="msg.role === 'user' ? 'User' : 'Assistant'"
+              class="w-8 h-8 rounded-full object-cover"  [ngClass]="{ 'items-start': msg.role === 'user', 'items-end': msg.role === 'assistant'}">
+            <div class="text-indigo-100 p-2 rounded-lg h-fit w-fit inline-block" [ngClass]="{ 'bg-green-500': msg.role === 'user', 'bg-green-900': msg.role === 'assistant', 'rounded-br-none border-green-500': msg.role === 'user', 'rounded-bl-none border-green-300': msg.role === 'assistant', 'items-start': msg.role === 'user', 'items-end': msg.role === 'assistant'}">
+                {{ msg.content }}
+            </div>
+          
+        </div> 
+      </div>
+   
+    <div class="flex items-center p-1 border-gray-200">
+      <input type="text" [(ngModel)]="userInput" placeholder="Type your message..." class="flex-grow px-4 py-1 rounded-lg bg-transparent border-2 border-orange-500 shadow-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-500">
+      <button (click)="handleSubmit()" class="ml-4 bg-orange-500 text-white px-4 py-1 rounded-lg hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-700">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 16 16">
+            <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z" />
+        </svg>
+      </button>
+    </div>
+</div> -->
+  
+
+<app-sidebar (startNewChat)="onStartNewChat()"></app-sidebar>
+<form [formGroup]="userInputForm" (ngSubmit)="handleSubmit()">
+    <div class="chat-interface flex flex-col h-full border rounded-md">
+        <div class="messages overflow-y-auto p-3 flex flex-col">
+            <div *ngFor="let msg of messages" class="flex mb-3 items-end" [ngClass]="{ 'justify-end': msg.role === 'user', 'justify-start': msg.role === 'assistant'}">
+                <div *ngIf="msg.role === 'assistant'">
+                    <img src="https://cdn-tlc.01net.com/dcJ5UWU0cnYMKTzjZFUeH7JB3yOiEEpV6gdqpuvU.png" alt="Bot avatar" class="w-8 h-8 rounded-full object-cover mr-2">
+                    <!-- <div *ngIf="isTyping" class="px-3 py-2 rounded-xl bg-green-900 rounded-bl-none border-green-300 ">
+                        Is Typing...
+                    </div> -->
+                </div>
+                <div class="message px-3 py-2 rounded-xl" [ngClass]="{ 'bg-green-500': msg.role === 'user', 'bg-green-900': msg.role === 'assistant', 'rounded-br-none border-green-500': msg.role === 'user', 'rounded-bl-none border-green-300': msg.role === 'assistant' }">
+                    {{ msg.content }}
+                </div>
+                <div *ngIf="msg.role === 'user'">
+                    <img src="https://pbs.twimg.com/profile_images/1642770590598676480/xvPxpaL3_400x400.png" alt="User avatar" class="w-8 h-8 rounded-full object-cover ml-2">
+                </div>
+            </div>
+        </div>
+        <div class="flex p-2 justify-between items-end ">
+            <input type="text" formControlName="userInput" placeholder="Type your message here..." class="input-msg p-2 rounded-md border border-gray-400 mr-2 bg-transparent shadow-md focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-orange-500"
+                (keydown.shift.enter)="handleSubmit()" (keydown.enter)="handleEnterKey($event)" required/>
+            <button type="submit" class="mr-4 bg-orange-500 text-white p-2 rounded-lg cursor-pointer hover:bg-orange-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-orange-700">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 16 16">
+                    <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576 6.636 10.07Zm6.787-8.201L1.591 6.602l4.339 2.76 7.494-7.493Z" />
+                </svg>
+            </button>
+        </div>
+    </div>
+</form>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

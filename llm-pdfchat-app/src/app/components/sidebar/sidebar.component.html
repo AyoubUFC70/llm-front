@@ -1,0 +1,160 @@
+<!-- <button data-drawer-target="logo-sidebar" data-drawer-toggle="logo-sidebar" aria-controls="logo-sidebar" type="button" class="inline-flex items-center p-2 mt-2 ms-3 text-sm text-indigo-50 rounded-lg sm-hidden hover:bg-violet-950 focus:outline-none focus:ring-2 focus:ring-blue-900">
+    span
+</button> -->
+
+<!-- <aside class="flex flex-col w-64 h-screen px-5 py-8 overflow-y-auto bg-blue-800 border-r rtl:border-r-0 rtl:border-l">
+    <a href="#">
+        <img class="w-auto h-7" src="https://atos.net/wp-content/uploads/2023/04/eviden-aab-logo-white.png" alt="">
+    </a>
+
+    <div class="new-chat-button">
+        <p>My new chat</p>
+        <button class="new-chat-btn" (click)="startNewChat()">Add new</button>
+    </div>
+
+    <div class="flex flex-col justify-between flex-1 mt-6">
+        <nav class="-mx-3 space-y-6 ">
+            <div class="space-y-3 ">
+                <label class="px-3 text-xs text-gray-500 uppercase">your documents</label>
+
+                <a *ngFor="let doc of documents" class="flex items-center px-3 py-2 text-stone-50 transition-colors duration-300 transform rounded-lg hover:text-stone-100" href="#">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m0 12.75h7.5m-7.5 3H12M10.5 2.25H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" />
+                    </svg>
+
+                    <span class="mx-2 text-sm font-medium">{{ doc.name }}</span>
+                </a>
+                
+            </div>
+
+        </nav>
+    </div>
+</aside> -->
+
+
+
+<!-- <aside class="flex flex-col w-64 h-screen px-5 py-8 overflow-y-auto bg-blue-800 border-r rtl:border-r-0 rtl:border-l">
+   
+    
+
+    <div class="new-chat-button">
+        <p>My new chat</p>
+        <button class="new-chat-btn" (click)="startNewChat()">Add new</button>
+    </div>
+
+    <div class="documents-list">
+        <h3>Your Documents</h3>
+        <ul>
+            <li *ngFor="let doc of documents">
+                {{ doc.name }}
+            </li>
+        </ul>
+    </div> -->
+
+
+
+<div class="sidebar fixed top-0 left-0  pl-3 pt-4 overflow-y-auto" [ngClass]="{  'collapsed': isSidebarCollapsed }">
+    <div class="text-white text-3xl cursor-pointer absolute top-0 right-0 m-4" (click)="toggleSidebar()">
+        <i class="fa-solid fa-bars"></i>
+    </div>
+    <div class="logo w-52  mb-8">
+        <img src="../../../assets/images/eviden-logo.png" alt="logo" class="max-w-full">
+    </div>
+    <div class="content">
+        <div class="new-chat px-2 py-2 mr-2 mb-4 hover:bg-green-800 rounded-lg cursor-pointer" [ngClass]="{ 'hidden': isSidebarCollapsed }">
+            <i class="fa-solid fa-plus pr-2"></i>
+            <button (click)="startNewChat()">New Chat</button>
+        </div>
+        <div class="document-list" [ngClass]="{ 'hidden': isSidebarCollapsed }">
+            <h3 class="mb-5 text-lg">Your Documents</h3>
+            
+            <ul class="space-y-2 ps-0">
+                <li *ngFor="let doc of documents" class="p-2 rounded-lg list-none ml-3 bg-transparent hover:bg-green-800">
+                    {{ doc.name }}
+                    <span (click)="deleteDocument(doc)" class="delete-icon ml-3 cursor-pointer">
+                        <i class="fa-solid fa-trash-can"></i>
+                    </span>
+                </li>
+            </ul>
+        </div>
+        <div class="upload-files items-center justify-center mt-10 w-full" [ngClass]="{ 'hidden': isSidebarCollapsed }">
+            <div class="px-4 py-5 mr-4 bg-green-900 rounded-lg text-center">
+                <p>Here you can click to the button <strong>Upload Files</strong> to upload files</p>
+                <input type="file" (change)="uploadFiles($event)" multiple class="hidden">
+                <button (click)="chooseFile()" class="py-2 px-4 rounded-full mt-6 mr-2 bg-green-600 hover:bg-green-800 cursor-pointer">
+                    Upload Files
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="msgSuccess">
+        <div *ngFor="let msg of msgSuccess; let i = index" id="alert-additional-content-3" class="p-4 mt-4 ml-3 text-green-800 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:text-green-400 dark:border-green-800" role="alert">
+            <div class="flex items-center">
+              <svg class="flex-shrink-0 w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+              </svg>
+              <span class="sr-only">Info</span>
+              <h3 class="text-lg font-medium">This is a success alert</h3>
+            </div>
+            <div class="mt-2 mb-4 text-sm">
+                {{ msg }}
+            </div>
+            <div class="flex">
+              <button (click)="dismissMsg(i)" aria-label="Close" type="button" class="text-green-800 bg-transparent border border-green-800 hover:bg-green-900 hover:text-white focus:ring-4 focus:outline-none focus:ring-green-300 font-medium rounded-lg text-xs px-3 py-1.5 text-center dark:hover:bg-green-600 dark:border-green-600 dark:text-green-400 dark:hover:text-white dark:focus:ring-green-800" data-dismiss-target="#alert-additional-content-3" aria-label="Close">
+                Close
+              </button>
+            </div>
+        </div>
+        <div class="my-2"></div>
+    </div>
+
+    <div *ngIf="msgError">
+        <div *ngFor="let msg of msgError; let i = index" id="alert-additional-content-2" class="p-4 mb-4 ml-3 text-red-800 border border-red-300 rounded-lg bg-red-50 dark:bg-gray-800 dark:text-red-400 dark:border-red-800" role="alert">
+            <div class="flex items-center">
+                <svg class="flex-shrink-0 w-4 h-4 me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+                </svg>
+                <span class="sr-only">Info</span>
+                <h3 class="text-lg font-medium">This is a danger alert</h3>
+            </div>
+            <div class="mt-2 mb-4 text-sm">
+                {{ msg }}
+            </div>
+            <div class="flex">
+                <button (click)="dismissErrMsg(i)" aria-lable="Close" type="button" class="text-red-800 bg-transparent border border-red-800 hover:bg-red-900 hover:text-white focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-xs px-3 py-1.5 text-center dark:hover:bg-red-600 dark:border-red-600 dark:text-red-500 dark:hover:text-white dark:focus:ring-red-800" data-dismiss-target="#alert-additional-content-2" aria-label="Close">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+    
+    <div *ngIf="isLoading">
+        <button type="button" class="text-white bg-transparent focus:ring-4 font-medium rounded-lg text-sm px-8 py-4 text-center me-2 inline-flex items-center">
+            <svg aria-hidden="true" role="status" class="inline w-4 h-4 me-3 text-white animate-spin" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z" fill="#E5E7EB"/>
+                <path d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z" fill="currentColor"/>
+            </svg>
+            Loading...
+        </button>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,32 @@
+/* .new-chat-btn {
+    @apply w-36 p-3 text-white text-center font-bold rounded-lg shadow-sm;
+    background-color: #007bff;
+}
+
+.new-chat-btn:hover {
+    background-color: #0069d9;
+} */
+
+.sidebar {
+    width: 300px;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.1);
+    transition: width 0.3s ease;
+    overflow-x: hidden;
+
+}
+
+.sidebar.collapsed {
+    width: 80px;
+}
+
+.content {
+    transition: opacity 0.5s ease;
+}
+
+
+/* .sidebar.collapsed .content {
+    opacity: 0;
+} */
+
+

@@ -1,0 +1,28 @@
+section .row {
+    list-style: none;
+}
+
+section .row i {
+    font-size: 30px;
+}
+
+section .details span {
+    font-size: 15px;
+}
+
+.progress-area::-webkit-scrollbar {
+    width: 0;
+}
+
+.progress-bar .progress {
+    width: 50%;
+    border-radius: inherit;
+}
+
+.uploaded-area::-webkit-scrollbar {
+    width: 0;
+}
+
+
+
+

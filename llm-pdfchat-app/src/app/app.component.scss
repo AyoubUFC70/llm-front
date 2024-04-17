@@ -1,0 +1,10 @@
+h2 {
+    transition: 0.5s;
+    left: 50%;
+    transform: translate(-50%, -50%); 
+}
+
+h2:hover {
+    color: transparent;
+    -webkit-text-stroke: 2px #fff;
+}
